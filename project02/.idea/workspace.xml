@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="lab07_2019102096" targetName="project1" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f848f510-3248-4a9b-ac71-2e7a2c4fd503" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/KHU-DataStructure-2020" />
+    <option name="UPDATE_TYPE" value="MERGE" />
+  </component>
+  <component name="ProjectId" id="1cGL9CYCpySfSHRAX6MPG3I4O2T" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+  </component>
+  <component name="RunManager">
+    <configuration name="project1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="lab07_2019102096" TARGET_NAME="project1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="lab07_2019102096" RUN_TARGET_NAME="project1">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f848f510-3248-4a9b-ac71-2e7a2c4fd503" name="Default Changelist" comment="" />
+      <created>1590149830119</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1590149830119</updated>
+      <workItem from="1590149831714" duration="11000" />
+      <workItem from="1590149905974" duration="1989000" />
+      <workItem from="1590416118364" duration="647000" />
+      <workItem from="1590487793096" duration="979000" />
+      <workItem from="1590494987497" duration="491000" />
+      <workItem from="1590932724074" duration="55000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="533" y="184" key="#com.intellij.ide.util.MemberChooser" timestamp="1590150881334">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="533" y="184" key="#com.intellij.ide.util.MemberChooser/0.23.1440.877@0.23.1440.877" timestamp="1590150881334" />
+    <state width="678" height="230" key="GridCell.Tab.0.bottom" timestamp="1590151933612">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="678" height="230" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1590151933612" />
+    <state width="678" height="230" key="GridCell.Tab.0.center" timestamp="1590151933611">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="678" height="230" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1590151933611" />
+    <state width="678" height="230" key="GridCell.Tab.0.left" timestamp="1590151933611">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="678" height="230" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1590151933611" />
+    <state width="678" height="230" key="GridCell.Tab.0.right" timestamp="1590151933612">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="678" height="230" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1590151933612" />
+    <state x="503" y="385" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1590932764311">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="503" y="385" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.877@0.23.1440.877" timestamp="1590932764311" />
+  </component>
+</project>
