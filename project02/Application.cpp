@@ -9,6 +9,205 @@ Application::Application() { i_Command = 0; }
 
 Application::~Application() {}
 
+void Application::LoginRun()
+{
+   while(1)
+    {
+        cout << "\n\n";
+        cout << "\n\t== <Login> ================================\n";
+        cout << "\t Enter your id and password please (Quit: 0)";
+        cout << "\n\t===========================================\n";
+
+        UserType user;
+        bool check;
+        int fail = 0;
+        user.SetIdFromUser();
+        if(user.GetId() == "0")
+            return;
+        user.SetPasswordFromUser();
+
+        if(user.GetId() == "admin" && user.GetPassword() == "admin")
+            AdminRun();
+        else
+        {
+            UserList.RetrieveItem(user, check);
+            if(check)
+            {
+                CurrentUser = user;
+                Run();
+            }
+            else
+            {
+                fail++;
+                if(fail < 3)
+                {
+                    cout << "\t<You've entered a wrong ID or password " << fail << "...>\n";
+                    cout << "\t<If you enter it wrong more than three times, the program will end>\n";
+                }
+                else
+                {
+                    cout << "\t<You've entered a wrong ID or password " << fail << "...>\n";
+                    cout << "\t<The program exits.>\n";
+                    return;
+                }
+            }
+        }
+    }
+}
+
+void Application::AdminRun()
+{
+    while(1)
+    {
+        int command;
+
+        cout << "\n\n";
+        cout << "\n\t== <Admin Menu> ============================\n";
+        cout << "\t #  1 | ADD user\n";
+        cout << "\t #  2 | DELETE user\n";
+        cout << "\t #  3 | REPLACE user\n";
+        cout << "\t #  4 | SEARCH user \n";
+        cout << "\t #  5 | PRINT user\n";
+        cout << "\t-------------------------------------------\n";
+        cout << "\t #  0 | Quit\n";
+        cout << "\t===========================================\n";
+
+        cout << "\n\t Choose a Commend--> ";
+        cin >> command;
+        cout << endl;
+
+        switch(command)
+        {
+            case 1:                 ///< Add user.
+                AddUser();
+                break;
+            case 2:                 ///< Delete user.
+                DeleteUser();
+                break;
+            case 3:                 ///< Update user data.
+                ReplaceUser();
+                break;
+            case 4:                 ///< Search user by id.
+                SearchUserById();
+                break;
+            case 5:                 ///< Print all user in user list.
+                PrintAllUser();
+                break;
+            case 0:
+                return;
+            default:
+                cout << "\tIllegal selection...\n";
+                break;
+        }
+    }
+}
+
+void Application::AddUser()
+{
+    UserType user;
+    bool check;
+    user.SetUserFromUser();
+    UserList.RetrieveItem(user, check);
+    if(check)
+    {
+        cout << "\n\t<====ALREADY has same ID !====>\n";
+        return;
+    }
+
+    int len = UserList.GetLength();
+    UserList.Add(user);
+    if(len == UserList.GetLength())
+    {
+        cout << "\n\t<=======Add User FAIL=========>\n";
+        return;
+    }
+
+    cout << "\n\t<=======Add User SUCCESS======>\n";
+}
+
+void Application::DeleteUser()
+{
+    UserType user;
+    bool check;
+    user.SetIdFromUser();
+    UserList.RetrieveItem(user, check);
+    if(check)
+    {
+        UserList.DeleteItem(user);
+        int len = UserList.GetLength();
+        UserList.Add(user);
+        if(len == UserList.GetLength())
+        {
+            cout << "\n\t<=======DELETE User FAIL======>\n";
+            return;
+        }
+        cout << "\n\t<=====DELETE User SUCCESS=====>\n";
+        return;
+    }
+
+    cout << "\n\t<===Can't found ID on list !==>\n";
+}
+
+void Application::ReplaceUser()
+{
+    UserType user;
+    bool check;
+    user.SetIdFromUser();
+    UserList.RetrieveItem(user, check);
+    if(check)
+    {
+        user.SetPasswordFromUser();
+        user.SetNameFromUser();
+        if(UserList.UpdateItem(user))
+        {
+            cout << "\n\t<=====Update User SUCCESS=====>\n";
+            return;
+        }
+        cout << "\n\t<=======Update User FAIL======>\n";
+        return;
+    }
+    cout << "\n\t<===Can't found ID on list !==>\n";
+}
+
+void Application::SearchUserById()
+{
+    UserType user;
+    bool check;
+    user.SetIdFromUser();
+
+    UserList.RetrieveItem(user, check);
+    if(check)
+    {
+        cout << "\n\t<============I FOUND ITEM !==========>\n";
+        cout << user;
+        cout << "\n\t<====================================>\n";
+        return;
+    }
+    cout << "\t<========I CAN'T FIND ITEM !==========>" << endl;
+}
+
+
+void Application::PrintAllUser()
+{
+    if(!UserList.IsEmpty())
+        UserList.PrintTree(cout);
+    else
+        cout << "\n\t<===========List is Empty============>\n" << endl;
+}
+
+
+/// User's Main menu
+
+void Application::DisplayCurrentUser()
+{
+    if(!CurrentUser.GetId().empty())
+    {
+        cout << "\n\t== <USER> ==================================\n";
+        cout << "\t ID   | " << CurrentUser.GetId() << endl;
+        cout << "\t Name | " << CurrentUser.GetName() << endl;
+    }
+}
+
 void Application::Run()
 {
     while(1)
@@ -47,6 +246,7 @@ void Application::Run()
 void Application::GetCommand()
 {
     cout << "\n\n";
+    DisplayCurrentUser();
     cout << "\n\t== <Main Menu> =============================\n";
     cout << "\t #  1 | ADD\n";
     cout << "\t #  2 | DELETE\n";
@@ -71,6 +271,7 @@ void Application::Add()
     while(1)
     {
         cout << "\n\n";
+        DisplayCurrentUser();
         cout << "\t== <ADD Menu> =============================\n";
         cout << "\t #  1 | Back to Main menu\n";
         cout << "\t-------------------------------------------\n";
@@ -117,6 +318,7 @@ void Application::Delete()
     while(1)
     {
         cout << "\n\n";
+        DisplayCurrentUser();
         cout << "\t== <DELETE Menu> ==========================\n";
         cout << "\t #  1 | Back to Main menu\n";
         cout << "\t-------------------------------------------\n";
@@ -143,7 +345,7 @@ void Application::Delete()
                 DeletePhoto();
                 break;
             case 4:     ///< make empty list
-                MasterList.MakeEmpty();
+                UserList.MakeEmpty();
                 break;
             case 0:
                 i_Command = 0;
@@ -161,6 +363,7 @@ void Application::Replace()
     while(1)
     {
         cout << "\n\n";
+        DisplayCurrentUser();
         cout << "\t== <REPLACE Menu> =========================\n";
         cout << "\t #  1 | Back to Main menu\n";
         cout << "\t-------------------------------------------\n";
@@ -202,6 +405,7 @@ void Application::Print()
     while(1)
     {
         cout << "\n\n";
+        DisplayCurrentUser();
         cout << "\t== <PRINT and SEARCH Menu> ================\n";
         cout << "\t #  1 | Back to Main menu\n";
         cout << "\t-------------------------------------------\n";
@@ -255,10 +459,10 @@ void Application::Print()
                 SearchById_BinaryS();
                 break;
             case 10:    ///< search item using name
-                SearchByName(RetreiveRecordByName());
+                SearchByName();
                 break;
             case 11:    ///< search item using kinds
-                SearchByKind(RetreiveRecordByKind());
+                SearchByKind();
                 break;
             case 0:
                 i_Command = 0;
@@ -305,7 +509,7 @@ int Application::ReadDataFromFile()
     while(!i_InFile.eof())
     {
         item.ReadDataFromFile(i_InFile);
-        MasterList.Add(item);
+        UserList.Add(CurrentUser);
     }
 
     i_InFile.close();
@@ -316,7 +520,7 @@ int Application::ReadDataFromFile()
 
 int Application::WriteDataToFile()
 {
-    ItemType item;
+    UserType user;
     char filename[FILENAMESIZE];
     cout << "\n\tEnter Output File Name : ";
     cin >> filename;
@@ -327,9 +531,10 @@ int Application::WriteDataToFile()
         return 0;
     }
 
-    MasterList.ResetList();
-    int length = MasterList.GetLength();
-    int curIndex = MasterList.GetNextItem(item);
+    /*
+    UserList.MakeEmpty();
+    int length = UserList.GetLength();
+    int curIndex = UserList.GetNextItem(item);
     while(curIndex < length && curIndex != -1)
     {
         item.WriteDataToFile(i_OutFile);
@@ -338,7 +543,7 @@ int Application::WriteDataToFile()
 
     i_OutFile.close();
     cout << "\n\t<=======Save Data SUCCESS !========>\n";
-
+    */
     return 1;
 
 
@@ -346,548 +551,148 @@ int Application::WriteDataToFile()
 
 int Application::AddItem()
 {
-    if(MasterList.IsFull())
+    if(CurrentUser.AddItem())
     {
-        cout << "\n\t<=======LIST is FULL !========>\n";
-        return 0;
+        UserList.UpdateItem(CurrentUser);
+        return 1;
     }
 
-    ItemType item;
-
-    item.SetRecordFromUser();
-
-    if(MasterList.Add(item) == 0)
-    {
-        cout << "\n\t<====ALREADY has same ID !====>\n";
-        return 0;
-    }
-
-    ContainerType tmpContainer;
-    StorageType tmpStorage;
-    SimpleItemType tmpsItem;
-
-    tmpContainer.SetConId(item.GetContainerID());
-    tmpStorage.SetStoId(item.GetStorageID());
-    tmpsItem.SetId(item.GetId());
-    tmpsItem.SetName(item.GetName());
-
-    if(StorageList.Get(tmpStorage) == 1)
-    {
-        if(StorageList.IsFull())
-        {
-            cout << "\n\t<====STORAGE LIST is FULL !====>\n";
-            return 0;
-        }
-
-        if (tmpStorage.GetContainer(tmpContainer) == 1)
-        {
-            tmpContainer.AddsItem(tmpsItem);
-            tmpStorage.UpdateContainer(tmpContainer);
-            StorageList.Replace(tmpStorage);
-        }
-        else
-        {
-            tmpContainer.AddsItem(tmpsItem);
-            tmpStorage.AddContainer(tmpContainer);
-            StorageList.Replace(tmpStorage);
-        }
-
-    }
-    else
-    {
-        tmpContainer.AddsItem(tmpsItem);
-        tmpStorage.AddContainer(tmpContainer);
-        StorageList.Add(tmpStorage);
-    }
-
-    return 1;
+    return 0;
 }
 
-int Application::AddItem(ItemType &item)
-{
-    if(MasterList.IsFull())
-    {
-        cout << "\n\t<=======LIST is FULL !========>\n";
-        return 0;
-    }
-
-    if(MasterList.Add(item) == 0)
-    {
-        cout << "\n\t<====ALREADY has same ID !====>\n";
-        return 0;
-    }
-
-    ContainerType tmpContainer;
-    StorageType tmpStorage;
-    SimpleItemType tmpsItem;
-
-    tmpContainer.SetConId(item.GetContainerID());
-    tmpStorage.SetStoId(item.GetStorageID());
-    tmpsItem.SetId(item.GetId());
-    tmpsItem.SetName(item.GetName());
-
-    if(StorageList.Get(tmpStorage) == 1)
-    {
-        if(StorageList.IsFull())
-        {
-            cout << "\n\t<====STORAGE LIST is FULL !====>\n";
-            return 0;
-        }
-
-        if (tmpStorage.GetContainer(tmpContainer) == 1)
-        {
-            tmpContainer.AddsItem(tmpsItem);
-            tmpStorage.UpdateContainer(tmpContainer);
-            StorageList.Replace(tmpStorage);
-        }
-        else
-        {
-            tmpContainer.AddsItem(tmpsItem);
-            tmpStorage.AddContainer(tmpContainer);
-            StorageList.Replace(tmpStorage);
-        }
-
-    }
-    else
-    {
-        tmpContainer.AddsItem(tmpsItem);
-        tmpStorage.AddContainer(tmpContainer);
-        StorageList.Add(tmpStorage);
-    }
-
-    return 1;
-}
 
 int Application::AddtItem()
 {
-    ItemType tmpItem;
-    tmpItem.SetIdFromUser();
-    tmpItem.SetKindFromUser();
-    tmpItem.SetNameFromUser();
-    tmpItem.SetDateFromUser();
-    tmpItem.SetNumFromUser();
-    tmpItem.SetWebsiteFromUser();
-
-    int len = TempList.GetnumOfItems();
-    TempList.AddtItem(tmpItem);
-
-    if(len < TempList.GetnumOfItems())
-        return 1;
-    else
+    if(CurrentUser.AddtItem())
     {
-        cout << "\n\t<=======ITEM add FAIL !=======>\n";
-        return 0;
+        UserList.UpdateItem(CurrentUser);
+        return 1;
     }
+    return 0;
 }
 
 int Application::AddPhoto()
 {
-    StorageType tmpSto;
-    ContainerType tmpBox;
-    tmpSto.SetStoIdFromUser();
-    tmpBox.SetConIdFromUser();
-
-    if(StorageList.Get(tmpSto) != 1)
+    if(CurrentUser.AddPhoto())
     {
-        cout << "\n\t<=====No Storage on List======>\n";
-        return 0;
+        UserList.UpdateItem(CurrentUser);
+        return 1;
     }
-
-    if(tmpSto.GetContainer(tmpBox) != 1)
-    {
-        cout << "\n\t<====No Container on List====>\n";
-        return 0;
-    }
-
-    string photo;
-    cout << "\n\tphoto : ";
-    cin >> photo;
-
-    tmpBox.AddPhoto(photo);
-    tmpSto.UpdateContainer(tmpBox);
-    StorageList.Replace(tmpSto);
-    return 1;
+    return 0;
 }
 
 int Application::AddLocation()
 {
-    StorageType tmpSto;
-    ContainerType tmpBox;
-    tmpSto.SetStoIdFromUser();
-    tmpBox.SetConIdFromUser();
-
-    if(StorageList.Get(tmpSto) != 1)
+    if(CurrentUser.AddLocation())
     {
-        cout << "\n\t<=====No Storage on List======>\n";
-        return 0;
+        UserList.UpdateItem(CurrentUser);
+        return 1;
     }
-
-    if(tmpSto.GetContainer(tmpBox) != 1)
-    {
-        cout << "\n\t<====No Container on List====>\n";
-        return 0;
-    }
-
-    tmpBox.SetConLocationFromUser();
-    tmpSto.UpdateContainer(tmpBox);
-    StorageList.Replace(tmpSto);
-    return 1;
+    return 0;
 }
 
 int Application::DeleteItem()
 {
-    int pre = MasterList.GetLength();
-    ItemType item;
-    item.SetIdFromUser();
-
-    MasterList.Delete(item);
-
-    ContainerType tmpbox;
-    StorageType tmp;
-    SimpleItemType tmpsItem;
-
-    tmpbox.SetConId(item.GetContainerID());
-    tmpsItem.SetId(item.GetId());
-    tmpbox.DeletesItem(tmpsItem);
-
-    tmp.SetStoId(item.GetStorageID());
-    StorageList.Get(tmp);
-    tmp.UpdateContainer(tmpbox);
-    StorageList.Replace(tmp);
-
-    if(pre > MasterList.GetLength())
+    if(CurrentUser.DeleteItem())
     {
-        cout << "\n\t<=======DELETE SUCCESS !========>\n";
+        UserList.UpdateItem(CurrentUser);
         return 1;
     }
-
-    cout << "\n\t<=======DELETE FAIL !===========>\n";
     return 0;
 }
 
 int Application::DeletePhoto()
 {
-    StorageType tmpSto;
-    ContainerType tmpBox;
-    tmpSto.SetStoIdFromUser();
-    tmpBox.SetConIdFromUser();
-
-    if(StorageList.Get(tmpSto) != 1)
+    if(CurrentUser.DeletePhoto())
     {
-        cout << "\n\t<=====No Storage on List======>\n";
-        return 0;
+        UserList.UpdateItem(CurrentUser);
+        return 1;
     }
-
-    if(tmpSto.GetContainer(tmpBox) != 1)
-    {
-        cout << "\n\t<====No Container on List====>\n";
-        return 0;
-    }
-
-    string photo;
-    cout << "\n\tphoto : ";
-    cin >> photo;
-
-
-    int len = tmpBox.GetPhotoLen();
-    tmpBox.DeletePhoto(photo);
-    if(tmpBox.GetPhotoLen() > len)
-    {
-        cout << "\n\t<====Can't Delete Photo on List=====>\n";
-        return 0;
-    }
-
-    tmpSto.UpdateContainer(tmpBox);
-    StorageList.Replace(tmpSto);
-    cout << "\n\t<====Delete Photo on List=====>\n";
-    return 1;
+    return 0;
 }
 
 int Application::ReplaceItem()
 {
-    ItemType item;
-    item.SetRecordFromUser();
-
-    ItemType origin;
-    origin.SetId(item.GetId());
-
-    if(MasterList.Get(origin) != 1)
+    if(CurrentUser.ReplaceItem())
     {
-        cout << "\n\t<=Can't find item in Master list=>" << endl;
-        return 0;
+        UserList.UpdateItem(CurrentUser);
+        return 1;
     }
-
-    MasterList.Get(origin);
-    MasterList.Replace(item);
-
-    StorageType tmpSto;
-    ContainerType tmpBox;
-    SimpleItemType tmpsItem;
-
-    tmpSto.SetStoId(origin.GetStorageID());
-    tmpBox.SetConId(origin.GetContainerID());
-    tmpsItem.SetId(origin.GetId());
-
-    if(StorageList.Get(tmpSto) == 1)
-    {
-        if(StorageList.IsFull())
-        {
-            cout << "\n\t<====STORAGE LIST is FULL !====>\n";
-            return 0;
-        }
-
-        if (tmpSto.GetContainer(tmpBox) == 1)
-        {
-            tmpsItem.SetRecord(item.GetId(), item.GetName());
-            tmpBox.UpdatesItem(tmpsItem);
-            tmpSto.UpdateContainer(tmpBox);
-            StorageList.Replace(tmpSto);
-        }
-        else
-        {
-            tmpsItem.SetRecord(item.GetId(), item.GetName());
-            tmpBox.UpdatesItem(tmpsItem);
-            tmpSto.AddContainer(tmpBox);
-            StorageList.Replace(tmpSto);
-        }
-
-    }
-    else
-    {
-        tmpsItem.SetRecord(item.GetId(), item.GetName());
-        tmpBox.AddsItem(tmpsItem);
-        tmpSto.AddContainer(tmpBox);
-        StorageList.Add(tmpSto);
-    }
+    return 0;
 }
 
 int Application::DequeueFromtItemList()
 {
-    ItemType tmpItem;
-    int len1 = TempList.GetnumOfItems();
-    int len2 = MasterList.GetLength();
-    TempList.DequeueFromtItemList(tmpItem);
-    tmpItem.SetStorageIDFromUser();
-    tmpItem.SetContainerIDFromUser();
-    AddItem(tmpItem);
-
-    if(len1 > TempList.GetnumOfItems() && len2 < MasterList.GetLength() )
+    if(CurrentUser.DequeueFromtItemList())
+    {
+        UserList.UpdateItem(CurrentUser);
         return 1;
-    else
-        return 0;
+    }
+    return 0;
 }
 
 
 int Application::ReplaceLocation()
 {
-    ContainerType tmpBox;
-    StorageType tmpSto;
-
-    tmpSto.SetStoIdFromUser();
-    tmpBox.SetConIdFromUser();
-
-    if(StorageList.Get(tmpSto) != 1)
+    if(CurrentUser.ReplaceLocation())
     {
-        cout << "\n\t<=====No Storage on List======>\n";
-        return 0;
+        UserList.UpdateItem(CurrentUser);
+        return 1;
     }
-
-    if(tmpSto.GetContainer(tmpBox) != 1)
-    {
-        cout << "\n\t<====No Container on List====>\n";
-        return 0;
-    }
-
-    tmpBox.SetConLocationFromUser();
-    tmpSto.UpdateContainer(tmpBox);
-    StorageList.Replace(tmpSto);
-
-    return 1;
+    return 0;
 }
 
 void Application::DisplayAllItem()
 {
-    ItemType data;
-
-    cout << "\n\t<======Current List========>\n\n";
-
-    MasterList.ResetList();
-    int length = MasterList.GetLength();
-    int curIndex = MasterList.GetNextItem(data);
-    while(curIndex < length && curIndex != -1)
-    {
-        data.DisplayRecordOnScreen();
-        curIndex = MasterList.GetNextItem(data);
-    }
+    CurrentUser.DisplayAllItem();
 }
 
 void Application::DisplaytItemList()
 {
-    if(TempList.GetnumOfItems() == 0)
-        cout << "\n\t<========No Temp Item========>\n";
-
-    TempList.PrinttItemList();
+    CurrentUser.DisplaytItemList();
 }
 
 void Application::DisplayAllPhoto()
 {
-    StorageType tmpSto;
-    ContainerType tmpBox;
-    tmpSto.SetStoIdFromUser();
-    tmpBox.SetConIdFromUser();
-
-    if(StorageList.Get(tmpSto) != 1)
-    {
-        cout << "\n\t<=====No Storage on List======>\n";
-        return;
-    }
-
-    if(tmpSto.GetContainer(tmpBox) != 1)
-    {
-        cout << "\n\t<====No Container on List====>\n";
-        return;
-    }
-
-    tmpBox.DisplayAllPhoto();
+    CurrentUser.DisplayAllPhoto();
 }
 
 void Application::DisplayAllContainer()
 {
-    StorageType tmpSto;
-    tmpSto.SetStoIdFromUser();
-
-    StorageList.Get(tmpSto);
-    cout << tmpSto << endl;
-    tmpSto.DisplayAllContainer();
+    CurrentUser.DisplayAllContainer();
 }
 
 void Application::DisplayAllDetailsContainer()
 {
-    StorageType tmpSto;
-    tmpSto.SetStoIdFromUser();
-
-    StorageList.Get(tmpSto);
-    cout << tmpSto << endl;
-    tmpSto.DisplayAllDetailsContainer(MasterList);
-
+    CurrentUser.DisplayAllDetailsContainer();
 }
 
 void Application::DisplayAllsItem()
 {
-    StorageType tmpSto;
-    ContainerType tmpBox;
-    tmpSto.SetStoIdFromUser();
-    tmpBox.SetConIdFromUser();
-
-    if(StorageList.Get(tmpSto) != 1)
-    {
-        cout << "\n\t<=====No Storage on List======>\n";
-        return;
-    }
-
-    if(tmpSto.GetContainer(tmpBox) != 1)
-    {
-        cout << "\n\t<====No Container on List====>\n";
-        return;
-    }
-
-    tmpBox.DisplayAllItem();
+    CurrentUser.DisplayAllsItem();
 }
 
 void Application::DisplayAllDetailsItem()
 {
-    StorageType tmpSto;
-    ContainerType tmpBox;
-    tmpSto.SetStoIdFromUser();
-    tmpBox.SetConIdFromUser();
-
-    if(StorageList.Get(tmpSto) != 1)
-    {
-        cout << "\n\t<=====No Storage on List======>\n";
-        return;
-    }
-
-    if(tmpSto.GetContainer(tmpBox) != 1)
-    {
-        cout << "\n\t<====No Container on List====>\n";
-        return;
-    }
-    tmpBox.DisplayAllDetailsItem(MasterList);
+    CurrentUser.DisplayAllDetailsItem();
 
 }
 
 int Application::SearchById_BinaryS()
 {
-    ItemType item;
-
-    item.SetIdFromUser();
-    if(MasterList.Get(item) != 0)
-    {
-        cout << "\n\t<============I FOUND ITEM !==========>\n";
-        item.DisplayRecordOnScreen();
-        cout << "\n\t<====================================>\n";
+    if(CurrentUser.SearchById_BinaryS())
         return 1;
-    }
-    cout << "\t<========I CAN'T FIND ITEM !==========>" << endl;
     return 0;
 }
 
-ItemType Application::RetreiveRecordByName()
+void Application::SearchByName()
 {
-    ItemType target;
-    target.SetNameFromUser();
-    return target;
+    CurrentUser.SearchByName(CurrentUser.RetreiveRecordByName());
 }
 
-void Application::SearchByName(ItemType target)
+void Application::SearchByKind()
 {
-    ItemType tmp;
-    int result = 0;
-
-    MasterList.ResetList();
-    while(MasterList.GetNextItem(tmp) != -1)
-    {
-        if((tmp.GetName() == target.GetName()) == 1)
-        {
-            if(result == 0)
-                cout << "\n\t<============I FOUND ITEM !============>\n";
-            tmp.DisplayRecordOnScreen();
-            result = 1;
-        }
-    }
-
-    if(result)
-        cout << "\t<===============================>\n";
-    else
-        cout << "\t<======I CAN'T FIND ITEM !======>\n";
+    CurrentUser.SearchByKind(CurrentUser.RetreiveRecordByKind());
 }
 
-ItemType Application::RetreiveRecordByKind()
-{
-    ItemType data;
-    data.SetKindFromUser();
-    return data;
-}
 
-void Application::SearchByKind(ItemType target)
-{
-    ItemType tmp;
-    int result = 0;
-
-    MasterList.ResetList();
-    while(MasterList.GetNextItem(tmp) != -1)
-    {
-        if((tmp.GetKind() == target.GetKind()) == 1)
-        {
-            if(result == 0)
-                cout << "\t<============I FOUND ITEM !============>\n";
-            tmp.DisplayRecordOnScreen();
-            result = 1;
-        }
-    }
-
-    if(result)
-        cout << "\t<===============================>\n";
-    else
-        cout << "\t<======I CAN'T FIND ITEM !======>\n";
-}

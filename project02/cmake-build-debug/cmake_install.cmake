@@ -1,4 +1,4 @@
-# Install script for directory: /Users/subinpark/Documents/2020_1_CSE20401/Lab07_full/lab07_2019102096
+# Install script for directory: /Users/subinpark/Documents/GitHub_Rep/KHU-DataStructure-2020/project02
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/subinpark/Documents/2020_1_CSE20401/Lab07_full/lab07_2019102096/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/subinpark/Documents/GitHub_Rep/KHU-DataStructure-2020/project02/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

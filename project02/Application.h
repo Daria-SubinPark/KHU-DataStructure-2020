@@ -11,9 +11,8 @@ private:
     ofstream                    i_OutFile;      ///< output file descriptor.
     int                         i_Command;      ///< current command number.
 
-    SortedList<ItemType>        MasterList;     ///< master list.
-    SortedList<StorageType>     StorageList;    ///< storage list.
-    TempType                    TempList;       ///< temp item list.
+    BinarySearchTree<UserType>  UserList;
+    UserType                    CurrentUser;
 
 public:
     /**
@@ -26,8 +25,25 @@ public:
      */
     ~Application();
 
+/// login menu
+    void LoginRun();
 
-/// Main menu
+/// Admin's Main menu
+    void AdminRun();
+
+    void AddUser();
+
+    void DeleteUser();
+
+    void ReplaceUser();
+
+    void SearchUserById();
+
+    void PrintAllUser();
+
+/// User's Main menu
+
+    void DisplayCurrentUser();
 
     /**
      *  @brief  Program driver.
@@ -124,15 +140,6 @@ public:
      *  @return return 1 if this function works well, otherwise 0.
      */
     int AddItem();
-
-    /**
-     *  @brief  Add new record into list. Contain choose master list or temp list.
-     *  @pre    list should be initialized.
-     *  @post   new record is added into the list.
-     *  @param  item new item
-     *  @return return 1 if this function works well, otherwise 0.
-     */
-    int AddItem(ItemType& item);
 
     /**
      *  @brief  Add new record into list. Contain choose temp list.
@@ -269,37 +276,19 @@ public:
     */
     int SearchById_BinaryS();
 
-
-    /**
-     *  @brief  Search item by name.
-     *  @pre    none.
-     *  @post   print item which is searched
-     *  @return return 1 if the function works well, otherwise return 0.
-     */
-    ItemType RetreiveRecordByName();
-
     /**
     *  @brief  Search All item by name.
     *  @pre    input name of item
     *  @post   print All item which is searched
     */
-    void SearchByName(ItemType target);
-
-
-    /**
-     *  @brief  Search item by Kind.
-     *  @pre    none.
-     *  @post   print item which is searched
-     *  @return return 1 if the function works well, otherwise return 0.
-     */
-    ItemType RetreiveRecordByKind();
+    void SearchByName();
 
     /**
     *  @brief  Search All item by Kind.
     *  @pre    input kind of item
     *  @post   print All item which is searched
     */
-    void SearchByKind(ItemType target);
+    void SearchByKind();
 
 
 };
