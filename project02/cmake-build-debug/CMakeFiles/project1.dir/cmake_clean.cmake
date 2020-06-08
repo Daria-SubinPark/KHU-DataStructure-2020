@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/project1.dir/Application.cpp.o"
   "CMakeFiles/project1.dir/BinarySearchTree.cpp.o"
+  "CMakeFiles/project1.dir/CHeapBase.cpp.o"
+  "CMakeFiles/project1.dir/CMinHeap.cpp.o"
   "CMakeFiles/project1.dir/CircularQueue.cpp.o"
   "CMakeFiles/project1.dir/ContainerType.cpp.o"
   "CMakeFiles/project1.dir/ItemType.cpp.o"

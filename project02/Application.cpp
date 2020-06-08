@@ -2,7 +2,6 @@
 // Created by 박수빈 on 2020/05/01.
 //
 
-#include "pch.h"
 #include "Application.h"
 
 Application::Application() { i_Command = 0; }
@@ -14,9 +13,9 @@ void Application::LoginRun()
    while(1)
     {
         cout << "\n\n";
-        cout << "\n\t== <Login> ================================\n";
+        cout << "\n\t== <Login> ==================================\n";
         cout << "\t Enter your id and password please (Quit: 0)";
-        cout << "\n\t===========================================\n";
+        cout << "\n\t=============================================\n";
 
         UserType user;
         bool check;

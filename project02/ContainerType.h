@@ -2,10 +2,16 @@
 // Created by 박수빈 on 2020/04/30.
 //
 #pragma once
+#include <iostream>
+#include <string>
+using namespace std;
+
 
 #include "UnsortedList.h"
 #include "SortedList.h"
+#include "CHeapBase.h"
 #include "SimpleItemType.h"
+#include "ItemType.h"
 
 class ContainerType
 {
@@ -150,7 +156,15 @@ public:
      *  @pre    all item is set.
      *  @post   all item is on screen.
      */
-    void DisplayAllDetailsItem(SortedList<ItemType>& ref);
+    void DisplayAllDetailsItem(CHeapBase<ItemType>* re);
+
+    /**
+     *  @brief  Get number of simple items
+     *  @pre    all item is set.
+     *  @post   none.
+     *  @return simple item list's length
+     */
+    int GetitemLength();
 
     bool operator==(const ContainerType& _box);
     bool operator>(const ContainerType& _box);
@@ -159,7 +173,7 @@ public:
 
     friend ostream& operator<<(ostream& os, ContainerType& _box) {
         os << "\tContainer ID : " << _box.c_id << endl;
-        if(_box.c_location != "")
+        if(!_box.c_location.empty())
             os << "\tLocation		: " << _box.c_location << endl;
         os << "\n\t<ItemList>----------------" << endl;
         os << _box.sItemList << endl;

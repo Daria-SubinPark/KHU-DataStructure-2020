@@ -1,8 +1,6 @@
-//
-// Created by 박수빈 on 2020/04/30.
-//
-
 #pragma once
+#include <iostream>
+using namespace std;
 
 
 template <typename T>
@@ -107,30 +105,29 @@ public:
      */
     int Replace(const T& data);
 
-    void operator= (const UnsortedList& _item)
-    {
-        delete[] i_Array;
-        i_Length = _item.i_Length;
-        i_CurPointer = _item.i_CurPointer;
-        i_MaxSize = _item.i_MaxSize;
-        i_Array = new T[i_MaxSize];
-        for(int i = 0; i < _item.i_Length; i++)
-            i_Array[i] = _item.i_Array[i];
-    }
+    void operator= (const UnsortedList& _item);
 
     friend ostream& operator<<(ostream& os, const UnsortedList& _item)
     {
-        for(int i = 0; i < _item.GetLength(); i++)
-            os << _item.i_Array[i] << endl;
+        if(_item.GetLength() == 1)
+            os << _item.i_Array[0] << endl;
+        else
+        {
+            for(int i = 0; i < _item.GetLength(); i++)
+            {
+                os << "[ " << i+1 << "] layer" << endl;
+                os << _item.i_Array[i] << endl;
+            }
+        }
+
         return os;
     }
 };
 
-
 template<typename T>
 UnsortedList<T>::UnsortedList()
 {
-    i_MaxSize = ADDSIZE;
+    i_MaxSize = 5;
     i_Length = 0;
     ResetList();
     i_Array = new T[i_MaxSize];
@@ -186,7 +183,7 @@ int UnsortedList<T>::Add(const T &inData)
 {
     if (!IsFull())
     {
-        i_Array[i_Length] = inData;
+        i_Array[i_Length]= inData;
         i_Length++;
     }
     else
@@ -239,3 +236,14 @@ int UnsortedList<T>::Replace(const T &data)
     return 0;
 }
 
+template<typename T>
+void UnsortedList<T>::operator=(const UnsortedList &_item)
+{
+    delete[] i_Array;
+    i_Length = _item.i_Length;
+    i_CurPointer = _item.i_CurPointer;
+    i_MaxSize = _item.i_MaxSize;
+    i_Array = new T[i_MaxSize];
+    for(int i = 0; i < _item.i_Length; i++)
+        i_Array[i] = _item.i_Array[i];
+}

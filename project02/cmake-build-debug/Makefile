@@ -177,6 +177,60 @@ BinarySearchTree.cpp.s:
 	$(MAKE) -f CMakeFiles/project1.dir/build.make CMakeFiles/project1.dir/BinarySearchTree.cpp.s
 .PHONY : BinarySearchTree.cpp.s
 
+CHeapBase.o: CHeapBase.cpp.o
+
+.PHONY : CHeapBase.o
+
+# target to build an object file
+CHeapBase.cpp.o:
+	$(MAKE) -f CMakeFiles/project1.dir/build.make CMakeFiles/project1.dir/CHeapBase.cpp.o
+.PHONY : CHeapBase.cpp.o
+
+CHeapBase.i: CHeapBase.cpp.i
+
+.PHONY : CHeapBase.i
+
+# target to preprocess a source file
+CHeapBase.cpp.i:
+	$(MAKE) -f CMakeFiles/project1.dir/build.make CMakeFiles/project1.dir/CHeapBase.cpp.i
+.PHONY : CHeapBase.cpp.i
+
+CHeapBase.s: CHeapBase.cpp.s
+
+.PHONY : CHeapBase.s
+
+# target to generate assembly for a file
+CHeapBase.cpp.s:
+	$(MAKE) -f CMakeFiles/project1.dir/build.make CMakeFiles/project1.dir/CHeapBase.cpp.s
+.PHONY : CHeapBase.cpp.s
+
+CMinHeap.o: CMinHeap.cpp.o
+
+.PHONY : CMinHeap.o
+
+# target to build an object file
+CMinHeap.cpp.o:
+	$(MAKE) -f CMakeFiles/project1.dir/build.make CMakeFiles/project1.dir/CMinHeap.cpp.o
+.PHONY : CMinHeap.cpp.o
+
+CMinHeap.i: CMinHeap.cpp.i
+
+.PHONY : CMinHeap.i
+
+# target to preprocess a source file
+CMinHeap.cpp.i:
+	$(MAKE) -f CMakeFiles/project1.dir/build.make CMakeFiles/project1.dir/CMinHeap.cpp.i
+.PHONY : CMinHeap.cpp.i
+
+CMinHeap.s: CMinHeap.cpp.s
+
+.PHONY : CMinHeap.s
+
+# target to generate assembly for a file
+CMinHeap.cpp.s:
+	$(MAKE) -f CMakeFiles/project1.dir/build.make CMakeFiles/project1.dir/CMinHeap.cpp.s
+.PHONY : CMinHeap.cpp.s
+
 CircularQueue.o: CircularQueue.cpp.o
 
 .PHONY : CircularQueue.o
@@ -516,6 +570,12 @@ help:
 	@echo "... BinarySearchTree.o"
 	@echo "... BinarySearchTree.i"
 	@echo "... BinarySearchTree.s"
+	@echo "... CHeapBase.o"
+	@echo "... CHeapBase.i"
+	@echo "... CHeapBase.s"
+	@echo "... CMinHeap.o"
+	@echo "... CMinHeap.i"
+	@echo "... CMinHeap.s"
 	@echo "... CircularQueue.o"
 	@echo "... CircularQueue.i"
 	@echo "... CircularQueue.s"

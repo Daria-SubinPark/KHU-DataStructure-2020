@@ -1,11 +1,10 @@
-//
-// Created by 박수빈 on 2020/04/30.
-//
-
 #pragma once
+#include <iostream>
+using namespace std;
 
+#define ADDSIZE 5;
 
-template <typename T>
+template<typename T>
 class SortedList
 {
 private:
@@ -279,4 +278,3 @@ int SortedList<T>::GetByBinarySearch(T &data)
     }
     return 0;
 }
-

@@ -1,7 +1,10 @@
 #pragma once
-#include "pch.h"
+#include <iostream>
+using namespace std;
 
-template <typename T>
+#define MAXQUEUE 5
+
+template <class T>
 class CircularQueue
 {
 private:
@@ -109,7 +112,7 @@ public:
 
 };
 
-template<typename T>
+template <class T>
 CircularQueue<T>::CircularQueue()
 {
     m_nMaxQueue = MAXQUEUE;
@@ -119,7 +122,7 @@ CircularQueue<T>::CircularQueue()
     m_pItems = new T[m_nMaxQueue];  // make m_pItems that size maxQueue
 }
 
-template<typename T>
+template <class T>
 CircularQueue<T>::CircularQueue(int max)
 {
     m_nMaxQueue = max;
@@ -129,7 +132,7 @@ CircularQueue<T>::CircularQueue(int max)
     m_pItems = new T[max];      // make m_pItems that size max
 }
 
-template<typename T>
+template <class T>
 CircularQueue<T>::CircularQueue(const CircularQueue<T>& tmp)
 {
     m_nMaxQueue = tmp.m_nMaxQueue;
@@ -139,16 +142,16 @@ CircularQueue<T>::CircularQueue(const CircularQueue<T>& tmp)
     m_pItems = new T[tmp.m_nMaxQueue];      // make m_pItems that size max
 }
 
-template<typename T>
+template <class T>
 CircularQueue<T>::~CircularQueue() { delete[] m_pItems; }
 
-template<typename T>
+template <class T>
 T CircularQueue<T>::GetCurPointer() const{ return m_pItems[m_CurPointer]; }
 
-template<typename T>
+template <class T>
 int CircularQueue<T>::GetMaxsize() const{ return m_nMaxQueue; }
 
-template<typename T>
+template <class T>
 bool CircularQueue<T>::IsFull() const
 {
     if(m_iFront - m_iRear == 1 || m_iRear - m_iFront == m_nMaxQueue - 1)
@@ -156,10 +159,10 @@ bool CircularQueue<T>::IsFull() const
     return 0;       // if Circular Queue isn't fool, return 0
 }
 
-template<typename T>
+template <class T>
 bool CircularQueue<T>::IsEmpty() const { return m_iFront == m_iRear; }
 
-template<typename T>
+template <class T>
 void CircularQueue<T>::ResetQueue()
 {
     m_iFront = m_nMaxQueue - 1;
@@ -169,10 +172,10 @@ void CircularQueue<T>::ResetQueue()
 
 }
 
-template<typename T>
+template <class T>
 void CircularQueue<T>::ResetCurrentPointer()    { m_CurPointer = m_iFront; }
 
-template<typename T>
+template <class T>
 void CircularQueue<T>::EnQueue(T item)
 {
     if(IsFull())
@@ -184,7 +187,7 @@ void CircularQueue<T>::EnQueue(T item)
     m_pItems[m_iRear] = item;
 }
 
-template<typename T>
+template <class T>
 void CircularQueue<T>::DeQueue(T &item)
 {
     if(IsEmpty())
@@ -193,7 +196,7 @@ void CircularQueue<T>::DeQueue(T &item)
     item = m_pItems[m_iFront];
 }
 
-template<typename T>
+template <class T>
 void CircularQueue<T>::PlayInsertOrder()
 {
     if(IsEmpty())
@@ -213,7 +216,7 @@ void CircularQueue<T>::PlayInsertOrder()
     cout << endl;
 }
 
-template<typename T>
+template <class T>
 int CircularQueue<T>::GetNextItem(T &item)
 {
     if(IsEmpty())

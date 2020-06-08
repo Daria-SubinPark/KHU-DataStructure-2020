@@ -1,6 +1,6 @@
-#include "pch.h"
+#include "Application.h"
 
-/// Todo write file, read file, masterlist->doublylinkedlist, storageList->singlelinkedlist, user menu -> display current user
+/// Todo write file, read file
 int main()
 {
     Application app;

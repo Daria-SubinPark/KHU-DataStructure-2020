@@ -1,9 +1,7 @@
-//
-// Created by 박수빈 on 2020/04/30.
-//
-
-
 #pragma once
+#include "ItemType.h"
+#include "CircularQueue.h"
+using namespace std;
 
 class TempType
 {
@@ -53,5 +51,4 @@ public:
      */
     void PrinttItemList();
 };
-
 

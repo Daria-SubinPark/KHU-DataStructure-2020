@@ -4,6 +4,12 @@
 
 #pragma once
 
+#include "BinarySearchTree.h"
+#include "UserType.h"
+
+#define FILENAMESIZE 1024
+
+
 class Application
 {
 private:

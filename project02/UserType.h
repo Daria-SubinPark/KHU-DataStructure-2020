@@ -1,4 +1,19 @@
 #pragma once
+#include <iostream>
+#include <string>
+#include <fstream>
+using namespace std;
+
+
+#include "SortedList.h"
+#include "CHeapBase.h"
+#include "CMinHeap.h"
+
+#include "ItemType.h"
+#include "StorageType.h"
+#include "TempType.h"
+
+#define FILENAMESIZE 1024
 
 class UserType
 {
@@ -7,7 +22,7 @@ private:
     string password;
     string name;
 
-    SortedList<ItemType>        MasterList;     ///< master list.
+    CHeapBase<ItemType>        *MasterList;     ///< master list.
     SortedList<StorageType>     StorageList;    ///< storage list.
     TempType                    TempList;       ///< temp item list.
 

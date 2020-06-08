@@ -2,7 +2,6 @@
 // Created by 박수빈 on 2020/04/30.
 //
 
-#include "pch.h"
 #include "ContainerType.h"
 
 
@@ -77,20 +76,21 @@ void ContainerType::DisplayAllPhoto()
 
 void ContainerType::DisplayAllItem() { cout << sItemList << endl; }
 
-void ContainerType::DisplayAllDetailsItem(SortedList<ItemType> &ref)
+void ContainerType::DisplayAllDetailsItem(CHeapBase<ItemType>* ref)
 {
     SimpleItemType tmpItem;
     sItemList.ResetList();
-    cout << "\t<ItemList>----------------\n";
     while(sItemList.GetNextItem(tmpItem) != -1)
     {
         ItemType detail;
+        bool check = false;
         detail.SetId(tmpItem.GetId());
-        ref.Get(detail);
+        ref->RetrieveItem(detail, check);
         cout << detail;
     }
-    DisplayAllPhoto();
 }
+
+int ContainerType::GetitemLength() { return sItemList.GetLength(); }
 
 
 bool ContainerType::operator==(const ContainerType &_box) { return c_id == _box.GetConId(); }
@@ -106,3 +106,4 @@ void ContainerType::operator=(const ContainerType &_box)
     sItemList = _box.sItemList;
     photoList = _box.photoList;
 }
+

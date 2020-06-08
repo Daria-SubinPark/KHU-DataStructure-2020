@@ -5,6 +5,14 @@
 
 #pragma once
 
+#include <iostream>
+using namespace std;
+
+#include "ContainerType.h"
+#include "SingleLinkedList.h"
+#include "ItemType.h"
+#include "CHeapBase.h"
+
 class StorageType
 {
 private:
@@ -132,7 +140,7 @@ public:
      *  @pre    all Container with item is set.
      *  @post   all Container with item is on screen.
      */
-    void DisplayAllDetailsContainer(SortedList<ItemType>& ref);
+    void DisplayAllDetailsContainer(CHeapBase<ItemType>* ref);
 
     bool operator== (const StorageType& _sto);
     bool operator> (const StorageType& _sto);

@@ -2,7 +2,6 @@
 // Created by 박수빈 on 2020/05/22.
 //
 
-#include "pch.h"
 #include "UserType.h"
 
 UserType::UserType()
@@ -10,6 +9,7 @@ UserType::UserType()
     id = "";
     password = "";
     name = "";
+    MasterList = new CMinHeap<ItemType>(10);
 }
 
 UserType::~UserType() {}
@@ -100,21 +100,31 @@ void UserType::SetUserFromUser()
 
 int UserType::AddItem()
 {
-    if(MasterList.IsFull())
+    if(MasterList->IsFull())
     {
-        cout << "\n\t<=======LIST is FULL !========>\n";
+        cout << "\n\tList is full" << endl;
         return 0;
     }
 
     ItemType item;
+    bool check = false;
 
     item.SetRecordFromUser();
+    MasterList->RetrieveItem(item, check);
 
-    if(MasterList.Add(item) == 0)
+    if(check)
     {
-        cout << "\n\t<====ALREADY has same ID !====>\n";
+        cout << "\n\tAlready has same ID!" << endl;
         return 0;
     }
+    else if(MasterList->IsFull())
+    {
+        cout << "\tMaster List is full" << endl;
+        return 0;
+    }
+
+
+    MasterList->Add(item);
 
     ContainerType tmpContainer;
     StorageType tmpStorage;
@@ -129,7 +139,7 @@ int UserType::AddItem()
     {
         if(StorageList.IsFull())
         {
-            cout << "\n\t<====STORAGE LIST is FULL !====>\n";
+            cout << "\tStorage List is full" << endl;
             return 0;
         }
 
@@ -159,17 +169,22 @@ int UserType::AddItem()
 
 int UserType::AddItem(ItemType &item)
 {
-    if(MasterList.IsFull())
+    bool check = false;
+    MasterList->RetrieveItem(item, check);
+
+    if(check)
     {
-        cout << "\n\t<=======LIST is FULL !========>\n";
+        cout << "\n\tAlready has same ID!" << endl;
+        return 0;
+    }
+    else if(MasterList->IsFull())
+    {
+        cout << "\tMaster List is full" << endl;
         return 0;
     }
 
-    if(MasterList.Add(item) == 0)
-    {
-        cout << "\n\t<====ALREADY has same ID !====>\n";
-        return 0;
-    }
+
+    MasterList->Add(item);
 
     ContainerType tmpContainer;
     StorageType tmpStorage;
@@ -184,7 +199,7 @@ int UserType::AddItem(ItemType &item)
     {
         if(StorageList.IsFull())
         {
-            cout << "\n\t<====STORAGE LIST is FULL !====>\n";
+            cout << "\tStorage List is full" << endl;
             return 0;
         }
 
@@ -290,33 +305,50 @@ int UserType::AddLocation()
 
 int UserType::DeleteItem()
 {
-    int pre = MasterList.GetLength();
-    ItemType item;
-    item.SetIdFromUser();
-
-    MasterList.Delete(item);
-
     ContainerType tmpbox;
     StorageType tmp;
     SimpleItemType tmpsItem;
+    ItemType item;
+    bool check;
+
+    item.SetIdFromUser();
+
+    if(!MasterList->Delete(item))
+    {
+        cout << "\n\t<=======DELETE FAIL !===========>\n";
+        return 0;
+    }
+
+    MasterList->RetrieveItem(item, check);
 
     tmpbox.SetConId(item.GetContainerID());
     tmpsItem.SetId(item.GetId());
-    tmpbox.DeletesItem(tmpsItem);
-
     tmp.SetStoId(item.GetStorageID());
     StorageList.Get(tmp);
-    tmp.UpdateContainer(tmpbox);
-    StorageList.Replace(tmp);
 
-    if(pre > MasterList.GetLength())
+    if(tmpbox.GetitemLength() == 0)
     {
+        tmpbox.DeletesItem(tmpsItem);
+        tmp.DeleteContainer(tmpbox);
+        if(tmp.GetCurrentNum() == 0)
+        {
+            StorageList.Delete(tmp);
+
+            cout << "\n\t<=======DELETE SUCCESS !========>\n";
+            return 1;
+        }
+        StorageList.Replace(tmp);
+
         cout << "\n\t<=======DELETE SUCCESS !========>\n";
         return 1;
     }
 
-    cout << "\n\t<=======DELETE FAIL !===========>\n";
-    return 0;
+    tmpbox.DeletesItem(tmpsItem);
+    tmp.UpdateContainer(tmpbox);
+    StorageList.Replace(tmp);
+
+    cout << "\n\t<=======DELETE SUCCESS !========>\n";
+    return 1;
 }
 
 int UserType::DeletePhoto()
@@ -365,14 +397,18 @@ int UserType::ReplaceItem()
     ItemType origin;
     origin.SetId(item.GetId());
 
-    if(MasterList.Get(origin) != 1)
+    bool check = false;
+
+    MasterList->RetrieveItem(origin, check);
+
+    if(!check)
     {
         cout << "\n\t<=Can't find item in Master list=>" << endl;
         return 0;
     }
 
-    MasterList.Get(origin);
-    MasterList.Replace(item);
+    MasterList->Delete(origin);
+    MasterList->Add(item);
 
     StorageType tmpSto;
     ContainerType tmpBox;
@@ -386,7 +422,7 @@ int UserType::ReplaceItem()
     {
         if(StorageList.IsFull())
         {
-            cout << "\n\t<====STORAGE LIST is FULL !====>\n";
+            cout << "\tStorage List is full" << endl;
             return 0;
         }
 
@@ -396,6 +432,7 @@ int UserType::ReplaceItem()
             tmpBox.UpdatesItem(tmpsItem);
             tmpSto.UpdateContainer(tmpBox);
             StorageList.Replace(tmpSto);
+            return 1;
         }
         else
         {
@@ -403,6 +440,7 @@ int UserType::ReplaceItem()
             tmpBox.UpdatesItem(tmpsItem);
             tmpSto.AddContainer(tmpBox);
             StorageList.Replace(tmpSto);
+            return 1;
         }
 
     }
@@ -412,6 +450,7 @@ int UserType::ReplaceItem()
         tmpBox.AddsItem(tmpsItem);
         tmpSto.AddContainer(tmpBox);
         StorageList.Add(tmpSto);
+        return 1;
     }
 }
 
@@ -419,13 +458,13 @@ int UserType::DequeueFromtItemList()
 {
     ItemType tmpItem;
     int len1 = TempList.GetnumOfItems();
-    int len2 = MasterList.GetLength();
+    int len2 = MasterList->GetLength();
     TempList.DequeueFromtItemList(tmpItem);
     tmpItem.SetStorageIDFromUser();
     tmpItem.SetContainerIDFromUser();
     AddItem(tmpItem);
 
-    if(len1 > TempList.GetnumOfItems() && len2 < MasterList.GetLength() )
+    if(len1 > TempList.GetnumOfItems() && len2 < MasterList->GetLength() )
         return 1;
     else
         return 0;
@@ -462,16 +501,13 @@ void UserType::DisplayAllItem()
 {
     ItemType data;
 
-    cout << "\n\t<======Current List========>\n\n";
-
-    MasterList.ResetList();
-    int length = MasterList.GetLength();
-    int curIndex = MasterList.GetNextItem(data);
-    while(curIndex < length && curIndex != -1)
+    if(!MasterList->IsEmpty())
     {
-        data.DisplayRecordOnScreen();
-        curIndex = MasterList.GetNextItem(data);
+        cout << "\n\t<======Current list======>\n\n";
+        MasterList->PrintHeap();
     }
+    else
+        cout << "\n\t<========Empty!!!========>\n\n";
 }
 
 void UserType::DisplaytItemList()
@@ -571,16 +607,21 @@ void UserType::DisplayAllDetailsItem()
 int UserType::SearchById_BinaryS()
 {
     ItemType item;
+    bool check = false;
 
     item.SetIdFromUser();
-    if(MasterList.Get(item) != 0)
+
+    MasterList->RetrieveItem(item, check);
+
+
+    if(check)
     {
         cout << "\n\t<============I FOUND ITEM !==========>\n";
         item.DisplayRecordOnScreen();
         cout << "\n\t<====================================>\n";
         return 1;
     }
-    cout << "\t<========I CAN'T FIND ITEM !==========>" << endl;
+    cout << "<========I CAN'T FIND ITEM !==========>" << endl;
     return 0;
 }
 
@@ -593,25 +634,34 @@ ItemType UserType::RetreiveRecordByName()
 
 void UserType::SearchByName(ItemType target)
 {
-    ItemType tmp;
-    int result = 0;
+    ItemType item;
+    bool check;
 
-    MasterList.ResetList();
-    while(MasterList.GetNextItem(tmp) != -1)
-    {
-        if((tmp.GetName() == target.GetName()) == 1)
-        {
-            if(result == 0)
-                cout << "\n\t<============I FOUND ITEM !============>\n";
-            tmp.DisplayRecordOnScreen();
-            result = 1;
+    cout << "\n\t<=======Current list========>\n\n";
+
+    for (int i = 0; i < MasterList->GetLength(); i++) {
+        if (MasterList->GetArray(i).GetName() == target.GetName()) {
+            StorageType tmpSto;
+            ContainerType tmpCon;
+            tmpSto.SetStoId(item.GetStorageID());
+            StorageList.Get(tmpSto);
+
+            tmpCon.SetConId(item.GetContainerID());
+            tmpSto.GetContainer(tmpCon);
+
+            item.SetId(MasterList->GetArray(i).GetId());
+            MasterList->RetrieveItem(item, check);
+            item.DisplayRecordOnScreen();
+            if (tmpCon.GetPhotoLen() == 0)
+                cout << "\t<=====NO Photo=====>\n";
+            else {
+                cout << "\tPhotoList  : ";
+                tmpCon.DisplayAllPhoto();
+                cout << endl;
+            }
         }
     }
-
-    if(result)
-        cout << "\t<===============================>\n";
-    else
-        cout << "\t<======I CAN'T FIND ITEM !======>\n";
+    return;
 }
 
 ItemType UserType::RetreiveRecordByKind()
@@ -623,23 +673,32 @@ ItemType UserType::RetreiveRecordByKind()
 
 void UserType::SearchByKind(ItemType target)
 {
-    ItemType tmp;
-    int result = 0;
+    ItemType item;
+    bool check;
 
-    MasterList.ResetList();
-    while(MasterList.GetNextItem(tmp) != -1)
-    {
-        if((tmp.GetKind() == target.GetKind()) == 1)
-        {
-            if(result == 0)
-                cout << "\t<============I FOUND ITEM !============>\n";
-            tmp.DisplayRecordOnScreen();
-            result = 1;
+    cout << "\n\t<=======Current list========>\n\n";
+
+    for (int i = 0; i < MasterList->GetLength(); i++) {
+        if (MasterList->GetArray(i).GetKind() == target.GetKind()) {
+            StorageType tmpSto;
+            ContainerType tmpCon;
+            tmpSto.SetStoId(item.GetStorageID());
+            StorageList.Get(tmpSto);
+
+            tmpCon.SetConId(item.GetContainerID());
+            tmpSto.GetContainer(tmpCon);
+
+            item.SetId(MasterList->GetArray(i).GetId());
+            MasterList->RetrieveItem(item, check);
+            item.DisplayRecordOnScreen();
+            if (tmpCon.GetPhotoLen() == 0)
+                cout << "\t<=====NO Photo=====>\n";
+            else {
+                cout << "\tPhotoList  : ";
+                tmpCon.DisplayAllPhoto();
+                cout << endl;
+            }
         }
     }
-
-    if(result)
-        cout << "\t<===============================>\n";
-    else
-        cout << "\t<======I CAN'T FIND ITEM !======>\n";
+    return;
 }

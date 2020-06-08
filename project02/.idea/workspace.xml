@@ -12,42 +12,55 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f848f510-3248-4a9b-ac71-2e7a2c4fd503" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CHeapBase.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CHeapBase.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMinHeap.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMinHeap.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Application.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application.h" beforeDir="false" afterPath="$PROJECT_DIR$/Application.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BinarySearchTree.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/BinarySearchTree.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BinarySearchTree.h" beforeDir="false" afterPath="$PROJECT_DIR$/BinarySearchTree.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CircularQueue.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/CircularQueue.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CircularQueue.h" beforeDir="false" afterPath="$PROJECT_DIR$/CircularQueue.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ContainerType.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ContainerType.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ContainerType.h" beforeDir="false" afterPath="$PROJECT_DIR$/ContainerType.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemType.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ItemType.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemType.h" beforeDir="false" afterPath="$PROJECT_DIR$/ItemType.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimpleItemType.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/SimpleItemType.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimpleItemType.h" beforeDir="false" afterPath="$PROJECT_DIR$/SimpleItemType.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SingleLinkedList.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/SingleLinkedList.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SingleLinkedList.h" beforeDir="false" afterPath="$PROJECT_DIR$/SingleLinkedList.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SortedList.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/SortedList.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SortedList.h" beforeDir="false" afterPath="$PROJECT_DIR$/SortedList.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageType.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/StorageType.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageType.h" beforeDir="false" afterPath="$PROJECT_DIR$/StorageType.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TempType.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/TempType.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TempType.h" beforeDir="false" afterPath="$PROJECT_DIR$/TempType.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UnsortedList.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/UnsortedList.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UnsortedList.h" beforeDir="false" afterPath="$PROJECT_DIR$/UnsortedList.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserType.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/UserType.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserType.h" beforeDir="false" afterPath="$PROJECT_DIR$/UserType.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Progress/1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Progress/2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Progress/count.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/lab07_2019102096.dir/CXX.includecache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/lab07_2019102096.dir/DependInfo.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/lab07_2019102096.dir/build.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/lab07_2019102096.dir/cmake_clean.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/lab07_2019102096.dir/depend.internal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/lab07_2019102096.dir/depend.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/lab07_2019102096.dir/flags.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/lab07_2019102096.dir/link.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/lab07_2019102096.dir/progress.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project1.dir/Application.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project1.dir/Application.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project1.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project1.dir/CXX.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project1.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project1.dir/DependInfo.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project1.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project1.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project1.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project1.dir/cmake_clean.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project1.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project1.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project1.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project1.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project1.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project1.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project1.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project1.dir/progress.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/lab07_2019102096.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/lab07_2019102096.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/project1" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/project1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pch.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pch.h" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +117,14 @@
       <workItem from="1590487793096" duration="979000" />
       <workItem from="1590494987497" duration="491000" />
       <workItem from="1590932724074" duration="55000" />
-      <workItem from="1590932886773" duration="8081000" />
+      <workItem from="1590932886773" duration="8200000" />
+      <workItem from="1591073531036" duration="748000" />
+      <workItem from="1591267796717" duration="2627000" />
+      <workItem from="1591279247068" duration="377000" />
+      <workItem from="1591354149631" duration="1281000" />
+      <workItem from="1591530059253" duration="866000" />
+      <workItem from="1591635404256" duration="2407000" />
+      <workItem from="1591638224373" duration="67000" />
     </task>
     <servers />
   </component>
@@ -112,30 +132,34 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="533" y="184" key="#com.intellij.ide.util.MemberChooser" timestamp="1590935363628">
+    <state x="533" y="184" key="#com.intellij.ide.util.MemberChooser" timestamp="1591637797690">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="533" y="184" key="#com.intellij.ide.util.MemberChooser/0.23.1440.877@0.23.1440.877" timestamp="1590935363628" />
-    <state x="215" y="64" key="CommitChangelistDialog2" timestamp="1590941074188">
+    <state x="533" y="184" key="#com.intellij.ide.util.MemberChooser/0.23.1440.877@0.23.1440.877" timestamp="1591637797690" />
+    <state x="818" y="215" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1591638236038">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="215" y="64" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1590941074188" />
-    <state width="1398" height="285" key="GridCell.Tab.0.bottom" timestamp="1590940991571">
+    <state x="818" y="215" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.877@0.23.1440.877" timestamp="1591638236038" />
+    <state x="215" y="64" key="CommitChangelistDialog2" timestamp="1591279197991">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="285" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1590940991571" />
-    <state width="1398" height="285" key="GridCell.Tab.0.center" timestamp="1590940991570">
+    <state x="215" y="64" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1591279197991" />
+    <state width="678" height="248" key="GridCell.Tab.0.bottom" timestamp="1591279202405">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="285" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1590940991570" />
-    <state width="1398" height="285" key="GridCell.Tab.0.left" timestamp="1590940991569">
+    <state width="678" height="248" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1591279202405" />
+    <state width="678" height="248" key="GridCell.Tab.0.center" timestamp="1591279202404">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="285" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1590940991569" />
-    <state width="1398" height="285" key="GridCell.Tab.0.right" timestamp="1590940991570">
+    <state width="678" height="248" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1591279202404" />
+    <state width="678" height="248" key="GridCell.Tab.0.left" timestamp="1591279202404">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="285" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1590940991570" />
+    <state width="678" height="248" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1591279202404" />
+    <state width="678" height="248" key="GridCell.Tab.0.right" timestamp="1591279202404">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="678" height="248" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1591279202404" />
     <state width="442" height="404" key="GridCell.Tab.1.bottom" timestamp="1590940991574">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -188,16 +212,5 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="385" y="213" width="670" height="676" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1590939200412" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Application.cpp</url>
-          <line>116</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

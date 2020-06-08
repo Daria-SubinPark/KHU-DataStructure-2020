@@ -2,7 +2,6 @@
 // Created by 박수빈 on 2020/04/30.
 //
 
-#include "pch.h"
 #include "StorageType.h"
 
 
@@ -74,7 +73,7 @@ void StorageType::DisplayAllContainer()
     cout << ContainerList << endl;
 }
 
-void StorageType::DisplayAllDetailsContainer(SortedList<ItemType>& ref)
+void StorageType::DisplayAllDetailsContainer(CHeapBase<ItemType>* ref)
 {
 
     ContainerType tmpBox;

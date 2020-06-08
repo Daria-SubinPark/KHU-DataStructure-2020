@@ -92,6 +92,18 @@
 		<Unit filename="/Users/subinpark/Documents/GitHub_Rep/KHU-DataStructure-2020/project02/BinarySearchTree.h">
 			<Option target="project1"/>
 		</Unit>
+		<Unit filename="/Users/subinpark/Documents/GitHub_Rep/KHU-DataStructure-2020/project02/CHeapBase.cpp">
+			<Option target="project1"/>
+		</Unit>
+		<Unit filename="/Users/subinpark/Documents/GitHub_Rep/KHU-DataStructure-2020/project02/CHeapBase.h">
+			<Option target="project1"/>
+		</Unit>
+		<Unit filename="/Users/subinpark/Documents/GitHub_Rep/KHU-DataStructure-2020/project02/CMinHeap.cpp">
+			<Option target="project1"/>
+		</Unit>
+		<Unit filename="/Users/subinpark/Documents/GitHub_Rep/KHU-DataStructure-2020/project02/CMinHeap.h">
+			<Option target="project1"/>
+		</Unit>
 		<Unit filename="/Users/subinpark/Documents/GitHub_Rep/KHU-DataStructure-2020/project02/CircularQueue.cpp">
 			<Option target="project1"/>
 		</Unit>

@@ -3,7 +3,8 @@
 //
 
 #pragma once
-
+#include <iostream>
+using namespace std;
 
 /**
 *	Structure for NodeType to use in Linked structure.
