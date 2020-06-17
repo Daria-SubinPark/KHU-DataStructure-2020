@@ -51,11 +51,11 @@ public:
     void SetUserFromUser();
 
     /**
- *  @brief  Add new record into list. Contain choose master list.
- *  @pre    list should be initialized.
- *  @post   new record is added into the list.
- *  @return return 1 if this function works well, otherwise 0.
- */
+     *  @brief  Add new record into list. Contain choose master list.
+     *  @pre    list should be initialized.
+     *  @post   new record is added into the list.
+     *  @return return 1 if this function works well, otherwise 0.
+     */
     int AddItem();
 
     /**
@@ -188,7 +188,6 @@ public:
     */
     int SearchById_BinaryS();
 
-
     /**
      *  @brief  Search item by name.
      *  @pre    none.
@@ -204,7 +203,6 @@ public:
     */
     void SearchByName(ItemType target);
 
-
     /**
      *  @brief  Search item by Kind.
      *  @pre    none.
@@ -219,6 +217,24 @@ public:
     *  @post   print All item which is searched
     */
     void SearchByKind(ItemType target);
+
+    /**
+     *  @brief  Read a record from file.
+     *  @pre    the target file is opened.
+     *  @post   item record is set.
+     *  @param  fin     file descriptor.
+     *  @return return 1 if this function works well, otherwise 0.
+     */
+    int ReadDataFromFile(ifstream& fin);
+
+    /**
+     *  @brief  Write a record into file.
+     *  @pre    the target file is opened. And the list should be initialized.
+     *  @post   the target file is included the new item record.
+     *  @param  fout    file descriptor.
+     *  @return return 1 if this function works well, otherwise 0.
+     */
+    int WriteDataToFile(ofstream& fout);
 
 
     bool operator==(const UserType& _user)

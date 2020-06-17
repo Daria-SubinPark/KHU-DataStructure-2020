@@ -702,3 +702,16 @@ void UserType::SearchByKind(ItemType target)
     }
     return;
 }
+
+int UserType::ReadDataFromFile(ifstream &fin)
+{
+    fin >> id;
+    fin >> password;
+    fin >> name;
+    return 1;
+}
+
+int UserType::WriteDataToFile(ofstream &fout)
+{
+    return 0;
+}

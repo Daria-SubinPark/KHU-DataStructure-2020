@@ -528,33 +528,6 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/project1.dir/build.make CMakeFiles/project1.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-pch.o: pch.cpp.o
-
-.PHONY : pch.o
-
-# target to build an object file
-pch.cpp.o:
-	$(MAKE) -f CMakeFiles/project1.dir/build.make CMakeFiles/project1.dir/pch.cpp.o
-.PHONY : pch.cpp.o
-
-pch.i: pch.cpp.i
-
-.PHONY : pch.i
-
-# target to preprocess a source file
-pch.cpp.i:
-	$(MAKE) -f CMakeFiles/project1.dir/build.make CMakeFiles/project1.dir/pch.cpp.i
-.PHONY : pch.cpp.i
-
-pch.s: pch.cpp.s
-
-.PHONY : pch.s
-
-# target to generate assembly for a file
-pch.cpp.s:
-	$(MAKE) -f CMakeFiles/project1.dir/build.make CMakeFiles/project1.dir/pch.cpp.s
-.PHONY : pch.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -609,9 +582,6 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... pch.o"
-	@echo "... pch.i"
-	@echo "... pch.s"
 .PHONY : help
 
 

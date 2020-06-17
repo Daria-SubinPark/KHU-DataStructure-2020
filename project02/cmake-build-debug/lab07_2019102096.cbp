@@ -167,12 +167,6 @@
 		<Unit filename="/Users/subinpark/Documents/GitHub_Rep/KHU-DataStructure-2020/project02/main.cpp">
 			<Option target="project1"/>
 		</Unit>
-		<Unit filename="/Users/subinpark/Documents/GitHub_Rep/KHU-DataStructure-2020/project02/pch.cpp">
-			<Option target="project1"/>
-		</Unit>
-		<Unit filename="/Users/subinpark/Documents/GitHub_Rep/KHU-DataStructure-2020/project02/pch.h">
-			<Option target="project1"/>
-		</Unit>
 		<Unit filename="/Users/subinpark/Documents/GitHub_Rep/KHU-DataStructure-2020/project02/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

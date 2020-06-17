@@ -90,15 +90,6 @@ public :
     */
     virtual void RetrieveItem(T &item, bool &found);
 
-    /**
-    *   @brief   Heap의 데이터를 아이템 종류로 검색하는 가상함수.
-    *   @pre   Heap가 초기화되어야한다.
-    *   @post   Heap의 데이터를 검색한다.
-    *   @param   item   ItemType형의 검색 할 데이터.
-    *   @param   found   찾았는지 못찾았는지 판단.
-    */
-    //virtual void RetrieveItembyKind(T &item, bool &found);
-
 
     /**
     *   @brief   Heap의 데이터를 출력하는 가상함수.
@@ -295,11 +286,3 @@ void CHeapBase<T>::Swap(int iparent, int ibottom)
     m_pHeap[iparent] = m_pHeap[ibottom];
     m_pHeap[ibottom] = temp;
 }
-/*
-template<class T>
-void CHeapBase<T>::RetrieveItembyKind(T &item, bool &found)
-{
-    RetrievebyKind(item, found, 0); // 데이터 검색
-}
-
-*/

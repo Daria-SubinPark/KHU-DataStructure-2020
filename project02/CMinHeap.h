@@ -57,16 +57,6 @@ public :
     */
     virtual void Retrieve(T &item, bool &found, int iparent);
 
-    /**
-    *   @brief   Heap의 데이터를 종류로 검색하는 가상함수.
-    *   @pre   Heap가 초기화되어야한다.
-    *   @post   Heap의 데이터를 검색한다.
-    *   @param   item   ItemType형의 검색 할 데이터.
-    *   @param   found   검색할 데이터를 찾았는지 아닌지 확인.
-    *   @param   ibottom   검색 중인 배열 위치.
-    */
-    //virtual void RetrievebyKind(T &item, bool &found, int iparent);
-
 };
 
 
@@ -178,26 +168,3 @@ void CMinHeap<T>::Retrieve(T &item, bool &found, int iparent)
     if ( rightChild < CHeapBase<T>::m_iLastNode && !found)
         Retrieve(item, found, rightChild); // 왼쪽으로 검색
 }
-
-/*
-template<typename T>
-void CMinHeap<T>::RetrievebyKind(T &item, bool &found, int iparent)
-{
-    int leftChild; // 왼쪽 자식데이터
-    int rightChild; // 오른쪽 자식데이터
-
-    leftChild = iparent*2 + 1;
-    rightChild = iparent*2 + 2;
-
-    if(CHeapBase<T>::m_pHeap[iparent] == NULL) // 검색하려는 데이터 발견
-    {
-        item.GetKind() = CHeapBase<T>::m_pHeap[iparent].GetKind();
-        found = true;
-    }
-    if ( leftChild < CHeapBase<T>::m_iLastNode && !found)
-        Retrieve(item, found, leftChild); // 왼쪽으로 검색
-    if ( rightChild < CHeapBase<T>::m_iLastNode && !found)
-        Retrieve(item, found, rightChild); // 왼쪽으로 검색
-}
-
-*/

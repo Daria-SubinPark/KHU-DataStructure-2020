@@ -491,10 +491,13 @@ int Application::OpenOutFile(char *fileName)
 
 int Application::ReadDataFromFile()
 {
-    int index = 0;
+    UserType user;
     ItemType item;
-
+    string userId;
+    string userFile;
+    ifstream U_outFile;
     char filename[FILENAMESIZE];
+
     cout << "\n\tEnter Input File Name : ";
     cin >> filename;
 
@@ -507,11 +510,31 @@ int Application::ReadDataFromFile()
 
     while(!i_InFile.eof())
     {
-        item.ReadDataFromFile(i_InFile);
-        UserList.Add(CurrentUser);
+        user.ReadDataFromFile(i_InFile);
+
+        userId = user.GetId();
+        userFile = userId + ".txt";
+
+        U_outFile.open(userFile);
+
+        if(!U_outFile)
+        {
+            cout << "\n\t<=====User File Open FAIL !=======>\n";
+            return 0;
+        }
+
+        while(!U_outFile.eof())
+        {
+            item.ReadDataFromFile(U_outFile);
+            user.AddItem(item);
+        }
+        U_outFile.close();
+
+        UserList.Add(user);
     }
 
     i_InFile.close();
+
 
     cout << "\n\t<=======Road Data SUCCESS !========>\n";
     return 1;
@@ -520,6 +543,12 @@ int Application::ReadDataFromFile()
 int Application::WriteDataToFile()
 {
     UserType user;
+    ItemType item;
+    string userId;
+    string userFile;
+    ifstream U_outFile;
+
+
     char filename[FILENAMESIZE];
     cout << "\n\tEnter Output File Name : ";
     cin >> filename;
@@ -530,22 +559,20 @@ int Application::WriteDataToFile()
         return 0;
     }
 
-    /*
-    UserList.MakeEmpty();
-    int length = UserList.GetLength();
-    int curIndex = UserList.GetNextItem(item);
-    while(curIndex < length && curIndex != -1)
+
+    for(int i = 0; i < UserList.GetLength(); ++i)
     {
-        item.WriteDataToFile(i_OutFile);
-        curIndex = MasterList.GetNextItem(item);
+        user.WriteDataToFile(i_OutFile);
+
     }
 
     i_OutFile.close();
+
+
     cout << "\n\t<=======Save Data SUCCESS !========>\n";
-    */
+
+
     return 1;
-
-
 }
 
 int Application::AddItem()

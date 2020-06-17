@@ -14,7 +14,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/project1.dir/UnsortedList.cpp.o"
   "CMakeFiles/project1.dir/UserType.cpp.o"
   "CMakeFiles/project1.dir/main.cpp.o"
-  "CMakeFiles/project1.dir/pch.cpp.o"
   "project1"
   "project1.pdb"
 )
